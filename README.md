@@ -84,7 +84,7 @@ portfolio/
 
 ## 🚀 Live Preview
 
-> 🔗 Coming Soon (Deployment in progress)
+https://anoop-portfolio-2p48.onrender.com/
 
 ---
 
