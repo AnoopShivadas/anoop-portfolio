@@ -38,71 +38,87 @@ export const LINKS = [
 
 // External links
 export const EXTRA_LINKS = {
-  linkedin: "https://www.linkedin.com/in/sanidhyy",
-  github: "https://github.com/sanidhyy",
+  linkedin: "https://www.linkedin.com/in/anoop-k-shivadas-6490ba314",
+  github: "https://github.com/AnoopShivadas",
   resume: "/resume.pdf",
   source_code: "https://github.com/sanidhyy/portfolio",
-  email: "sanidhya.verma12345@gmail.com",
+  email: "anoopshivadas25@gmail.com",
 } as const;
 
 // Data for work experience
 export const EXPERIENCES_DATA = [
   {
-    title: "Passed High School",
+    title: "BSc IT Student — Mulund College of Commerce",
     description:
-      "Completed my high school curriculum, gaining a solid foundation in various subjects and essential skills.",
+      "Pursuing Bachelor of Science in Information Technology with strong academic performance (CGPA 7.8), including Subject Topper in Numerical Methods and consistent ranking among top students.",
     icon: React.createElement(LuGraduationCap),
-    date: "2022",
+    date: "Jun 2023 – Mar 2026",
   },
   {
-    title: "React.js Bootcamp",
+    title: "Academic Achievements",
     description:
-      "Successfully completed an intensive 1-month React.js Developer Bootcamp. Acquired expertise in React components, state management with Redux, and interacting with RESTful APIs.",
+      "Secured Subject Topper in Numerical Methods and 2nd rank in 3rd semester, demonstrating strong analytical thinking and problem-solving skills.",
+    icon: React.createElement(LuGraduationCap),
+    date: "2023 – 2024",
+  },
+  {
+    title: "Cybersecurity Intern — Digisuraksha Parhari Foundation",
+    description:
+      "Performed phishing simulations and email header analysis to detect threats, classify risks, and apply real-world cybersecurity investigation techniques.",
     icon: React.createElement(CgWorkAlt),
-    date: "2023",
+    date: "Jul 2025 – Sep 2025",
   },
   {
-    title: "Freelancer React.js Developer",
+    title: "Web Development Intern — Unify Labs",
     description:
-      "Worked as a freelance React.js Developer, I have collaborated with various clients to create responsive and dynamic web applications.",
+      "Built responsive web interfaces using HTML, CSS, and JavaScript, improved UI/UX performance, and collaborated on real-world development tasks.",
     icon: React.createElement(FaReact),
-    date: "2023 - 2024",
-  },
-  {
-    title: "Jaro Dev Studio",
-    description:
-      "Currently working as a Full-stack Next.js Developer, building responsive and dynamic web applications using Next.js, Tailwind CSS and OpenAI.",
-    icon: React.createElement(SiNextdotjs),
-    date: "2024 - present",
+    date: "Jan 2026 – Feb 2026",
   },
 ] as const;
 
 // Data for projects
 export const PROJECTS_DATA = [
   {
-    title: "CarHub",
+    title: "Email Header Forensics & Threat Traceback Portal",
     description:
-      "A web app that is built using NextJS and enables users to quickly search and obtain information about cars.",
-    tags: ["React", "Next.js", "TypeScript", "Tailwind", "Headless UI"],
-    imageUrl: carhubImg,
-    projectUrl: "https://carhb.vercel.app/",
+  "Analyze email headers, trace IP routes, and detect phishing risks using structured forensic insights.",
+    tags: ["Python", "Flask", "Cyber Analysis", "Web App"],
+    imageUrl: "/email.png",
+    projectUrl: "https://email-forensics-app.onrender.com/",
   },
   {
-    title: "Realtor",
+    title: "MGNREGA Data Analytics Dashboard",
     description:
-      "Buy and rent homes for everyone. I was the front-end developer. It has features like filtering, sorting, and pagination.",
-    tags: ["React", "Chakra UI", "Next.js", "Framer Motion", "React Icons"],
-    imageUrl: realtorImg,
-    projectUrl: "https://real-estate-app-react.vercel.app/",
+      "Interactive dashboard visualizing employment and expenditure data with dynamic charts.",
+    tags: ["JavaScript", "Data Visualization", "Dashboard", "Tailwind"],
+    imageUrl: "/mngera.png",
+    projectUrl: "https://mgnrega-dashboard-zvdy.onrender.com/",
   },
   {
-    title: "ECommerce Store",
+    title: "Responsive Restaurant Webpage",
     description:
-      "A NextJS-based eCommerce store that allows users to order different products. It supports real-time payments using Stripe.",
-    tags: ["React", "Next.js", "Sanity", "React Router", "Stripe"],
-    imageUrl: ecommerceImg,
-    projectUrl: "https://ecommerce-app-next.vercel.app/",
+      "Fully responsive restaurant website built using HTML and CSS with a clean modern UI.",
+    tags: ["HTML", "CSS", "Responsive Design"],
+    imageUrl: "/restaurant.png",
+    projectUrl: "https://anoopshivadas.github.io/Restaurant_page/",
   },
+  {
+  title: "Weather App",
+  description:
+    "Real-time weather application displaying temperature, humidity, and conditions using API integration with a responsive UI.",
+  tags: ["JavaScript", "API", "Responsive UI"],
+  imageUrl: "/weather.png",
+  projectUrl: "https://anoopshivadas.github.io/Weather/",
+},
+{
+  title: "Hover Images UI",
+  description:
+    "Interactive image gallery with smooth hover effects and overlays built using pure HTML and CSS.",
+  tags: ["HTML", "CSS", "UI Design"],
+  imageUrl: "/hover.png",
+  projectUrl: "https://anoopshivadas.github.io/Hover-Images/",
+},
 ] as const;
 
 // Data for skills

@@ -86,9 +86,5 @@
       "type": "Buy me a coffee",
       "url": "https://www.buymeacoffee.com/sanidhy"
     }
-  ],
-  "overrides": {
-    "@types/react": "19.2.10",
-    "@types/react-dom": "19.2.3"
-  }
+  ]
 }

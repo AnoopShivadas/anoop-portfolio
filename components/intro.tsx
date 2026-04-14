@@ -1,7 +1,5 @@
-// Import necessary dependencies and components.
-"use client"; // This comment indicates that this code should run on the client side in Next.js.
+"use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
@@ -9,124 +7,127 @@ import { BsArrowRight, BsLinkedin } from "react-icons/bs";
 import { FaGithubSquare } from "react-icons/fa";
 import { HiDownload } from "react-icons/hi";
 
-import { EXTRA_LINKS, OWNER_NAME } from "@/constants";
+import { EXTRA_LINKS } from "@/constants";
 import { useActiveSectionContext } from "@/context/active-section-context";
 import { useSectionInView } from "@/lib/hooks";
 
-// Define the Intro component.
 const Intro = () => {
-  // Use the 'useSectionInView' hook to track section visibility.
   const { ref } = useSectionInView("Home", 0.5);
-  // Use the 'useActiveSectionContext' to manage active sections and clicks.
   const { setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
 
   return (
     <section
       ref={ref}
       id="home"
-      className="mb-28 max-w-[50rem] text-center sm:mb-0 scroll-mt-[100rem]"
+      className="relative mb-28 max-w-[70rem] mx-auto px-4 text-center sm:mb-0 scroll-mt-[100rem]"
     >
-      <div className="flex items-center justify-center">
-        <div className="relative">
-          <motion.div
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{
-              type: "tween",
-              duration: 0.2,
-            }}
-          >
-            <Image
-              src="/profile.png"
-              alt={`${OWNER_NAME.split(" ")[0]} portrait`}
-              width={192}
-              height={192}
-              quality={95}
-              priority={true}
-              className="h-24 w-24 rounded-full object-cover border-[0.35rem] border-white shadow-xl"
-            />
-          </motion.div>
-
-          <motion.span
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{
-              type: "spring",
-              stiffness: 125,
-              delay: 0.1,
-              duration: 0.7,
-            }}
-            className="absolute text-2xl bottom-0 right-0"
-          >
-            👋
-          </motion.span>
-        </div>
+      {/* 🔥 BACKGROUND GLOW EFFECT */}
+      <div className="absolute inset-0 -z-10 flex justify-center">
+        <div className="w-[500px] h-[500px] bg-blue-500/20 blur-[120px] rounded-full" />
       </div>
 
-      <motion.h1
-        className="mb-10 mt-4 px-4 text-2xl font-medium !leading-[1.5] sm:text-4xl"
-        initial={{ opacity: 0, y: 100 }}
-        animate={{ opacity: 1, y: 0 }}
+      {/* 👋 SMALL INTRO ANIMATION */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.5 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.4 }}
+        className="text-3xl mb-4"
       >
-        <b className="font-bold">Hi, I&apos;m {OWNER_NAME.split(" ")[0]}.</b>{" "}
-        I&apos;m a <b className="font-bold">full-stack developer</b> with{" "}
-        <b className="font-bold">5+ years</b> of experience. I enjoy building{" "}
-        <i className="italic">sites and apps</i>. My focus is{" "}
-        <u className="underline">React (Next.js)</u>.
+        👋
+      </motion.div>
+
+      {/* 🔥 MAIN HEADING */}
+      <motion.h1
+        className="text-4xl sm:text-6xl font-bold leading-tight"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+      >
+        Hi, I'm{" "}
+        <span className="text-blue-500">Anoop Shivadas</span>
       </motion.h1>
 
-      <motion.div
-        initial={{ opacity: 0, y: 100 }}
+      {/* 🔥 SUB HEADING */}
+      <motion.p
+        className="mt-4 text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto"
+        initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.1 }}
-        className="flex flex-col gap-y-4 sm:flex-row sm:gap-x-2 justify-center items-center"
+        transition={{ delay: 0.2 }}
       >
-        <div className="flex gap-2 flex-col sm:flex-row text-lg font-medium">
-          <Link
-            href="#contact"
-            className="group bg-gray-900 text-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-105 hover:scale-105 hover:bg-gray-950 active:scale-95 transition"
-            onClick={() => {
-              // Set the active section and the time of the last click.
-              setActiveSection("Contact");
-              setTimeOfLastClick(Date.now());
-            }}
-          >
-            Contact me
-            <BsArrowRight className="opacity-70 group-hover:translate-x-0.5 transition" />
-          </Link>
+        I build{" "}
+        <span className="text-white font-semibold">
+          modern web applications
+        </span>{" "}
+        and work with{" "}
+        <span className="text-white font-semibold">
+          data-driven solutions
+        </span>{" "}
+        to solve real-world problems.
+      </motion.p>
 
-          <Link
-            href={EXTRA_LINKS.resume}
-            target="_blank"
-            className="group bg-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-105 hover:scale-105 active:scale-95 transition borderBlack dark:bg-white/10"
-          >
-            My Resume
-            <HiDownload className="opacity-60 group-hover:translate-y-0.5 transition" />
-          </Link>
-        </div>
-        <div className="flex gap-2 text-lg font-medium">
-          <Link
-            href={EXTRA_LINKS.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-white p-4 text-gray-700 flex items-center gap-2 rounded-full outline-none focus:scale-[1.1] hover:scale-[1.1] active:scale-95 hover:text-gray-950 transition borderBlack dark:bg-white/10 dark:text-white/60"
-            aria-label="Linkedin"
-            title="Linkedin"
-          >
-            <BsLinkedin />
-          </Link>
+      {/* 🔥 FOCUS LINE */}
+      <motion.p
+        className="mt-3 text-md text-gray-400"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.3 }}
+      >
+        Web Development • Data Analytics • Problem Solving
+      </motion.p>
 
-          <Link
-            href={EXTRA_LINKS.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-white p-4 text-gray-700 flex items-center gap-2 text-[1.35rem] rounded-full outline-none focus:scale-[1.1] hover:scale-[1.1] active:scale-95 hover:text-gray-950 transition borderBlack dark:bg-white/10 dark:text-white/60"
-            aria-label="GitHub"
-            title="GitHub"
-          >
-            <FaGithubSquare />
-          </Link>
-        </div>
+      {/* 🔥 BUTTONS */}
+      <motion.div
+        className="flex flex-col sm:flex-row justify-center items-center gap-4 mt-8"
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.4 }}
+      >
+        {/* CONTACT BUTTON */}
+        <Link
+          href="#contact"
+          className="group bg-blue-600 text-white px-8 py-3 flex items-center gap-2 rounded-full hover:scale-105 hover:bg-blue-700 active:scale-95 transition"
+          onClick={() => {
+            setActiveSection("Contact");
+            setTimeOfLastClick(Date.now());
+          }}
+        >
+          Contact Me
+          <BsArrowRight className="group-hover:translate-x-1 transition" />
+        </Link>
+
+        {/* RESUME */}
+        <Link
+          href={EXTRA_LINKS.resume}
+          target="_blank"
+          className="group bg-white/10 backdrop-blur px-8 py-3 flex items-center gap-2 rounded-full border border-white/20 hover:scale-105 active:scale-95 transition"
+        >
+          Resume
+          <HiDownload className="group-hover:translate-y-1 transition" />
+        </Link>
+      </motion.div>
+
+      {/* 🔥 SOCIAL ICONS */}
+      <motion.div
+        className="flex justify-center gap-4 mt-6"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.5 }}
+      >
+        <Link
+          href={EXTRA_LINKS.linkedin}
+          target="_blank"
+          className="p-4 bg-white/10 backdrop-blur rounded-full hover:scale-110 transition"
+        >
+          <BsLinkedin className="text-xl" />
+        </Link>
+
+        <Link
+          href={EXTRA_LINKS.github}
+          target="_blank"
+          className="p-4 bg-white/10 backdrop-blur rounded-full hover:scale-110 transition"
+        >
+          <FaGithubSquare className="text-xl" />
+        </Link>
       </motion.div>
     </section>
   );

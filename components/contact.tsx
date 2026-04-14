@@ -1,5 +1,4 @@
-// Import necessary dependencies and components.
-"use client"; // This comment indicates that this code should run on the client side in Next.js.
+"use client";
 
 import emailjs, { type EmailJSResponseStatus } from "@emailjs/browser";
 import { motion } from "framer-motion";
@@ -11,15 +10,13 @@ import { FaPaperPlane } from "react-icons/fa";
 
 import { EXTRA_LINKS } from "@/constants";
 import { useSectionInView } from "@/lib/hooks";
-
 import SectionHeading from "./section-heading";
 
-// Define the Contact component.
 const Contact = () => {
-  // Use the useSectionInView custom hook to track when the "Contact" section is in view.
   const { ref } = useSectionInView("Contact");
   const [loading, setLoading] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
+
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -28,9 +25,7 @@ const Contact = () => {
 
   const recaptchaRef = createRef<ReCAPTCHA>();
 
-  // Handle form field changes.
   const handleChange = (e: FormEvent) => {
-    // Extract the field name and value from the event.
     const { name, value } = e.target as HTMLInputElement;
     setForm({ ...form, [name]: value });
   };
@@ -43,30 +38,24 @@ const Contact = () => {
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "",
         process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "",
         {
-          to_name: form.name,
-          to_email: form.email,
+          from_name: form.name,
+          reply_to: form.email,
           message: form.message,
-
-          // verifying google recaptcha
+          subject: "Portfolio Contact Form",
           "g-recaptcha-response": value,
         },
         process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || ""
       )
       .then(
         () => {
-          // Success: Display a success message using toast.
-          toast.success(
-            "Thank You. I will get back to you as soon as possible."
-          );
+          toast.success("Message sent successfully. I’ll get back to you soon!");
         },
         (error: EmailJSResponseStatus) => {
-          // Error handling: Display an error message and log the error.
           console.error(error);
           toast.error(error.text ?? "Something went wrong!");
         }
       )
       .finally(() => {
-        // Clear the loading indicator, and reset the form fields.
         setLoading(false);
         recaptchaRef?.current?.reset();
         setForm({
@@ -77,28 +66,22 @@ const Contact = () => {
       });
   };
 
-  // Validate the form on submission.
   const validateForm = (): boolean => {
-    // Extract form fields.
     const { name, email, message } = form;
 
-    // Validate the name field.
     if (name.trim().length < 3) {
       toast.error("Invalid Name");
       return false;
     }
 
-    // Regular expression for email validation.
     const emailRegex =
       /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-    // Validate the email field.
     if (!email.trim().toLowerCase().match(emailRegex)) {
       toast.error("Invalid E-mail");
       return false;
     }
 
-    // Validate the message field.
     if (message.trim().length < 5) {
       toast.error("Invalid Message");
       return false;
@@ -107,132 +90,138 @@ const Contact = () => {
     return true;
   };
 
-  // Handle form submission.
   const handleSubmit = (e: FormEvent) => {
-    // Prevent the default page reload.
     e.preventDefault();
 
-    // Validate the form.
     if (!validateForm()) return false;
 
-    // Show a loading indicator.
     setLoading(true);
 
-    if (!recaptchaRef) return;
-
-    // execute google recaptcha
     recaptchaRef.current?.execute();
   };
 
   const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
-  // Return the Contact section with animations and the contact form.
   return (
     <motion.section
       id="contact"
       ref={ref}
-      className="mb-20 sm:mb-28 text-center w-[min(100%,38rem)]"
+      className="mb-20 sm:mb-28 text-center w-[min(100%,38rem)] mx-auto"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
-      transition={{
-        duration: 1,
-      }}
-      viewport={{
-        once: true,
-      }}
+      transition={{ duration: 1 }}
+      viewport={{ once: true }}
     >
-      <SectionHeading>My contact</SectionHeading>
+      <SectionHeading>Contact Me</SectionHeading>
 
-      <p className="text-gray-700 -mt-6 dark:text-white/80">
-        Please contact me directly at my{" "}
-        <Link className="underline" href={`mailto:${EXTRA_LINKS.email}`}>
+      <p className="text-gray-600 -mt-6 dark:text-white/80">
+        Feel free to reach out for opportunities, collaborations, or any queries.
+        <Link className="underline ml-1" href={`mailto:${EXTRA_LINKS.email}`}>
           e-mail
         </Link>{" "}
         or through this form.
       </p>
 
+      {/* FORM */}
       <form
-        className="mt-10 flex flex-col dark:text-black"
-        autoComplete="off"
-        autoCapitalize="off"
         ref={formRef}
         onSubmit={handleSubmit}
+        className="mt-10 flex flex-col gap-4 p-6 rounded-2xl 
+        bg-white dark:bg-white/5 
+        border border-gray-200 dark:border-white/10 
+        backdrop-blur-xl shadow-lg"
       >
-        {/* Input fields for name, email, and message. */}
+        {/* NAME */}
         <input
           type="text"
           name="name"
-          id="name"
           value={form.name}
           onChange={handleChange}
           disabled={loading}
           placeholder="Your name"
-          className="h-14 rounded-lg px-4 borderBlack disabled:opacity-75 disabled:cursor-not-allowed dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none"
+          className="h-14 px-4 rounded-lg 
+          bg-white dark:bg-white/10
+          text-black dark:text-white
+          placeholder:text-gray-500 dark:placeholder:text-white/50
+          border border-gray-300 dark:border-white/10
+          focus:border-blue-500 focus:ring-2 focus:ring-blue-500/30
+          outline-none transition-all"
           required
-          maxLength={200}
-          autoComplete="off"
-          autoCapitalize="off"
         />
 
+        {/* EMAIL */}
         <input
           type="email"
           name="email"
-          id="email"
           value={form.email}
           onChange={handleChange}
           disabled={loading}
           placeholder="Your email"
-          className="h-14 rounded-lg my-4 px-4 borderBlack disabled:opacity-75 disabled:cursor-not-allowed dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none"
+          className="h-14 px-4 rounded-lg 
+          bg-white dark:bg-white/10
+          text-black dark:text-white
+          placeholder:text-gray-500 dark:placeholder:text-white/50
+          border border-gray-300 dark:border-white/10
+          focus:border-blue-500 focus:ring-2 focus:ring-blue-500/30
+          outline-none transition-all"
           required
-          maxLength={100}
-          autoComplete="off"
-          autoCapitalize="off"
         />
 
+        {/* MESSAGE */}
         <textarea
-          className="h-52 rounded-lg mb-4 borderBlack disabled:opacity-75 disabled:cursor-not-allowed p-4 dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none"
           name="message"
-          id="message"
           value={form.message}
           onChange={handleChange}
           disabled={loading}
           placeholder="Your message"
-          cols={30}
-          rows={10}
+          className="h-52 p-4 rounded-lg 
+          bg-white dark:bg-white/10
+          text-black dark:text-white
+          placeholder:text-gray-500 dark:placeholder:text-white/50
+          border border-gray-300 dark:border-white/10
+          focus:border-blue-500 focus:ring-2 focus:ring-blue-500/30
+          outline-none transition-all resize-none"
           required
-          maxLength={500}
         />
 
         {siteKey && (
           <ReCAPTCHA
             ref={recaptchaRef}
-            aria-disabled={loading}
             size="invisible"
             sitekey={siteKey}
             onChange={handleCaptchaChange}
-            className="mb-4"
           />
         )}
 
-        {/* Submit button with conditional rendering for loading state. */}
+        {/* BUTTON */}
         <button
           type="submit"
-          className="group flex self-center items-center justify-center gap-2 h-[3rem] w-[8rem] bg-gray-900 text-white rounded-full outline-none transition-all focus:scale-110 hover:scale-110 active:scale-105 hover:bg-gray-950 disabled:scale-100 disabled:bg-opacity-65 dark:bg-white dark:bg-opacity-10"
           disabled={loading}
+          className="group relative self-center mt-4 px-8 py-3 rounded-full 
+          bg-gradient-to-r from-blue-600 to-purple-600 
+          text-white font-medium 
+          shadow-lg shadow-blue-500/20
+          transition-all duration-300 
+          hover:scale-105 hover:shadow-xl hover:shadow-blue-500/40
+          active:scale-95
+          disabled:opacity-60 disabled:cursor-not-allowed"
         >
-          {loading ? (
-            <span className="h-5 w-5 animate-spin rounded-full border-b-2 border-white" />
-          ) : (
-            <>
-              Submit{" "}
-              <FaPaperPlane className="text-xs opacity-70 transition-all group-hover:translate-x-1 group-hover:-translate-y-1" />
-            </>
-          )}
+          <span className="flex items-center gap-2">
+            {loading ? (
+              <span className="h-5 w-5 animate-spin rounded-full border-b-2 border-white" />
+            ) : (
+              <>
+                Send Message
+                <FaPaperPlane className="text-xs transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+              </>
+            )}
+          </span>
+
+          <span className="absolute inset-0 rounded-full bg-blue-500 opacity-0 group-hover:opacity-20 blur-xl transition"></span>
         </button>
       </form>
     </motion.section>
   );
 };
 
-// Export the Contact component.
 export default Contact;

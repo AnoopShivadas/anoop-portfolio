@@ -1,58 +1,111 @@
-// client-side component
 "use client";
 
-// Import necessary dependencies and components.
 import { motion } from "framer-motion";
-
 import { useSectionInView } from "@/lib/hooks";
-
 import SectionHeading from "./section-heading";
 
-// Define the About component.
 const About = () => {
-  // Use the useSectionInView custom hook to track when the "About" section is in view.
   const { ref } = useSectionInView("About");
 
-  // Return the About section, which uses framer-motion for animations.
   return (
-    <motion.section
+    <section
       ref={ref}
       id="about"
-      initial={{ opacity: 0, y: 100 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.175 }}
-      className="mb-28 max-w-[45rem] text-center leading-8 sm:mb-40 scroll-mt-28"
+      className="relative mb-28 max-w-[70rem] mx-auto px-4 sm:mb-40 scroll-mt-28 text-center"
     >
-      {/* Display the section heading for "About me." */}
-      <SectionHeading>About me</SectionHeading>
+      <div className="absolute inset-0 -z-10 flex justify-center">
+        <div className="w-[400px] h-[400px] bg-blue-400/10 blur-[120px] rounded-full" />
+      </div>
 
-      {/* Display a paragraph with information about the user's background and interests. */}
-      <p className="mb-3">
-        After passing out my <b className="font-medium">High School</b>, I
-        decided to pursue my passion for programming. I enrolled in a coding
-        bootcamp and learned{" "}
-        <b className="font-medium">full-stack web development</b>.{" "}
-        <i className="italic">My favorite part of programming</i> is the
-        problem-solving aspect. I <u className="underline">love</u> the feeling
-        of finally figuring out a solution to a problem. My core stack is{" "}
-        <b className="font-medium">React, Next.js, Node.js, and MySQL</b>. I am
-        also familiar with TypeScript and Prisma. I am always looking to learn
-        new technologies. I am currently looking for a{" "}
-        <b className="font-medium">full-time position</b> as a software
-        developer.
-      </p>
+      <SectionHeading>About Me</SectionHeading>
 
-      {/* Display another paragraph about the user's interests and hobbies. */}
-      <p>
-        <i className="italic">When I'm not coding</i>, I enjoy playing video
-        games, watching movies, and reading novels. I also enjoy{" "}
-        <b className="font-medium">learning new things</b>. I am currently
-        learning about <b className="font-medium">astronomy and psychology</b>.
-        I'm also learning how to build and program robots.
-      </p>
-    </motion.section>
+      {/* 🔥 INTRO */}
+      <motion.p
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="mt-6 text-lg sm:text-xl text-gray-700 dark:text-gray-300 max-w-2xl mx-auto"
+      >
+        A{" "}
+        <span className="font-semibold text-black dark:text-white">
+          BSc IT student
+        </span>{" "}
+        focused on building practical solutions through{" "}
+        <span className="text-blue-500 font-semibold">
+          web development
+        </span>{" "}
+        and{" "}
+        <span className="text-blue-500 font-semibold">
+          data analytics
+        </span>.
+      </motion.p>
+
+      {/* 🔥 FEATURE CARDS */}
+      <motion.div
+        initial={{ opacity: 0, y: 60 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2 }}
+        className="grid sm:grid-cols-3 gap-6 mt-12"
+      >
+        {/* CARD 1 */}
+        <div className="p-6 rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 backdrop-blur hover:scale-105 transition">
+          <h3 className="font-semibold text-lg mb-2 text-black dark:text-white">
+            Development
+          </h3>
+          <p className="text-sm text-gray-600 dark:text-gray-400">
+            Designing and building clean, responsive web interfaces with a focus on usability and performance.
+          </p>
+        </div>
+
+        {/* CARD 2 */}
+        <div className="p-6 rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 backdrop-blur hover:scale-105 transition">
+          <h3 className="font-semibold text-lg mb-2 text-black dark:text-white">
+            Data
+          </h3>
+          <p className="text-sm text-gray-600 dark:text-gray-400">
+            Exploring data to identify patterns, generate insights, and support informed decision-making.
+          </p>
+        </div>
+
+        {/* CARD 3 */}
+        <div className="p-6 rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 backdrop-blur hover:scale-105 transition">
+          <h3 className="font-semibold text-lg mb-2 text-black dark:text-white">
+            Problem Solving
+          </h3>
+          <p className="text-sm text-gray-600 dark:text-gray-400">
+            Approaching challenges with structured thinking and a focus on efficient, real-world solutions.
+          </p>
+        </div>
+      </motion.div>
+
+      {/* 🔥 CLEAN BADGES (NO FLEXING) */}
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.4 }}
+        className="mt-12 flex flex-wrap justify-center gap-4"
+      >
+        <div className="px-5 py-2 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 text-sm font-medium">
+          Academic Consistency
+        </div>
+        <div className="px-5 py-2 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 text-sm font-medium">
+          Project-Based Learning
+        </div>
+        <div className="px-5 py-2 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 text-sm font-medium">
+          Continuous Improvement
+        </div>
+      </motion.div>
+
+      {/* 🔥 FINAL LINE */}
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.5 }}
+        className="mt-8 text-gray-600 dark:text-gray-400 italic"
+      >
+        Focused on building reliable systems and continuously improving through hands-on experience.
+      </motion.p>
+    </section>
   );
 };
 
-// Export the About component.
 export default About;
