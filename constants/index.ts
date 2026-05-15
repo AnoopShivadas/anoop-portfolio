@@ -1,14 +1,10 @@
 import React from "react";
+
 import { CgWorkAlt } from "react-icons/cg";
 import { FaReact } from "react-icons/fa";
 import { LuGraduationCap } from "react-icons/lu";
-import { SiNextdotjs } from "react-icons/si";
 
-import carhubImg from "@/public/carhub.png";
-import realtorImg from "@/public/realtor.png";
-import ecommerceImg from "@/public/ecommerce.png";
-
-// Navigation links
+// NAVIGATION LINKS
 export const LINKS = [
   {
     name: "Home",
@@ -36,113 +32,158 @@ export const LINKS = [
   },
 ] as const;
 
-// External links
+// EXTERNAL LINKS
 export const EXTRA_LINKS = {
   linkedin: "https://www.linkedin.com/in/anoop-k-shivadas-6490ba314",
   github: "https://github.com/AnoopShivadas",
   resume: "/resume.pdf",
-  source_code: "https://github.com/sanidhyy/portfolio",
+  source_code: "https://github.com/AnoopShivadas",
   email: "anoopshivadas25@gmail.com",
 } as const;
 
-// Data for work experience
+// EXPERIENCE DATA
 export const EXPERIENCES_DATA = [
   {
     title: "BSc IT Student — Mulund College of Commerce",
     description:
-      "Pursuing Bachelor of Science in Information Technology with strong academic performance (CGPA 7.8), including Subject Topper in Numerical Methods and consistent ranking among top students.",
+      "Pursuing a Bachelor of Science in Information Technology with a strong focus on data analytics, business intelligence, and practical problem-solving through real-world projects.",
     icon: React.createElement(LuGraduationCap),
     date: "Jun 2023 – Mar 2026",
   },
+
   {
     title: "Academic Achievements",
     description:
-      "Secured Subject Topper in Numerical Methods and 2nd rank in 3rd semester, demonstrating strong analytical thinking and problem-solving skills.",
+      "Secured Subject Topper in Numerical Methods and achieved 2nd rank in the 3rd semester, demonstrating analytical thinking and quantitative reasoning skills.",
     icon: React.createElement(LuGraduationCap),
     date: "2023 – 2024",
   },
+
   {
     title: "Cybersecurity Intern — Digisuraksha Parhari Foundation",
     description:
-      "Performed phishing simulations and email header analysis to detect threats, classify risks, and apply real-world cybersecurity investigation techniques.",
+      "Worked on phishing simulations, email header analysis, threat investigation, and risk classification using real-world cybersecurity analysis techniques.",
     icon: React.createElement(CgWorkAlt),
     date: "Jul 2025 – Sep 2025",
   },
+
   {
     title: "Web Development Intern — Unify Labs",
     description:
-      "Built responsive web interfaces using HTML, CSS, and JavaScript, improved UI/UX performance, and collaborated on real-world development tasks.",
+      "Collaborated on responsive web interface development and improved practical UI implementation and technical problem-solving skills.",
     icon: React.createElement(FaReact),
     date: "Jan 2026 – Feb 2026",
   },
 ] as const;
 
-// Data for projects
+// PROJECTS DATA
 export const PROJECTS_DATA = [
+  {
+    title: "Uber Trip Analysis Dashboard",
+    description:
+      "Interactive Power BI dashboard analyzing ride bookings, cancellations, revenue trends, payment methods, and customer behavior using business intelligence techniques.",
+    tags: [
+      "Power BI",
+      "Data Analytics",
+      "Dashboard",
+      "Business Intelligence",
+    ],
+    imageUrl: "/uber-dashboard.png",
+    projectUrl:
+      "https://app.powerbi.com/groups/me/reports/4e470abf-e2d3-4749-b5a2-06043f4b7242/fa60ae93d7003ba64db1?experience=power-bi",
+  },
+
+  {
+    title: "Fitness Analytics Dashboard",
+    description:
+      "Comprehensive Power BI fitness dashboard tracking memberships, revenue, expenses, profit trends, and customer engagement using visual analytics.",
+    tags: [
+      "Power BI",
+      "Visualization",
+      "Analytics",
+      "Reporting",
+    ],
+    imageUrl: "/gym-dashboard.png",
+    projectUrl:
+      "https://app.powerbi.com/groups/me/reports/60875090-8fc6-401d-b465-5a3b28b6fc34/ac7e98efe4bc30a70a5a?experience=power-bi",
+  },
+
+  {
+    title: "Vrinda Sales Excel Dashboard",
+    description:
+      "Advanced Excel dashboard analyzing sales performance, customer demographics, order channels, and revenue insights using charts, slicers, and reporting tools.",
+    tags: [
+      "Excel",
+      "Data Cleaning",
+      "Sales Analysis",
+      "Dashboard",
+    ],
+    imageUrl: "/excel-dashboard.png",
+    projectUrl:
+      "https://github.com/AnoopShivadas/vrinda-sales-analysis-excel",
+  },
+
   {
     title: "Email Header Forensics & Threat Traceback Portal",
     description:
-  "Analyze email headers, trace IP routes, and detect phishing risks using structured forensic insights.",
-    tags: ["Python", "Flask", "Cyber Analysis", "Web App"],
+      "Final-year cybersecurity project focused on email header investigation, phishing detection, IP tracing, and risk analysis using forensic techniques.",
+    tags: [
+      "Python",
+      "Flask",
+      "Cybersecurity",
+      "Threat Analysis",
+    ],
     imageUrl: "/email.png",
     projectUrl: "https://email-forensics-app.onrender.com/",
   },
+
   {
     title: "MGNREGA Data Analytics Dashboard",
     description:
-      "Interactive dashboard visualizing employment and expenditure data with dynamic charts.",
-    tags: ["JavaScript", "Data Visualization", "Dashboard", "Tailwind"],
+      "Interactive analytics dashboard visualizing employment trends, expenditure patterns, and public welfare insights using dynamic charts and reporting.",
+    tags: [
+      "Dashboard",
+      "Analytics",
+      "Visualization",
+      "JavaScript",
+    ],
     imageUrl: "/mngera.png",
     projectUrl: "https://mgnrega-dashboard-zvdy.onrender.com/",
   },
+
   {
-    title: "Responsive Restaurant Webpage",
+    title: "Responsive Restaurant Website",
     description:
-      "Fully responsive restaurant website built using HTML and CSS with a clean modern UI.",
-    tags: ["HTML", "CSS", "Responsive Design"],
+      "Modern responsive restaurant website developed using HTML and CSS with a clean user interface and mobile-friendly design.",
+    tags: ["HTML", "CSS", "Responsive UI"],
     imageUrl: "/restaurant.png",
     projectUrl: "https://anoopshivadas.github.io/Restaurant_page/",
   },
-  {
-  title: "Weather App",
-  description:
-    "Real-time weather application displaying temperature, humidity, and conditions using API integration with a responsive UI.",
-  tags: ["JavaScript", "API", "Responsive UI"],
-  imageUrl: "/weather.png",
-  projectUrl: "https://anoopshivadas.github.io/Weather/",
-},
-{
-  title: "Hover Images UI",
-  description:
-    "Interactive image gallery with smooth hover effects and overlays built using pure HTML and CSS.",
-  tags: ["HTML", "CSS", "UI Design"],
-  imageUrl: "/hover.png",
-  projectUrl: "https://anoopshivadas.github.io/Hover-Images/",
-},
 ] as const;
 
-// Data for skills
+// SKILLS DATA
 export const SKILLS_DATA = [
+  "Excel",
+  "SQL",
+  "Python",
+  "Power BI",
+  "Tableau",
+  "Pandas",
+  "NumPy",
+  "Matplotlib",
+  "Seaborn",
+  "MySQL",
+  "PostgreSQL",
+  "Data Cleaning",
+  "Data Visualization",
+  "Dashboard Development",
+  "Business Intelligence",
+  "Git",
+  "GitHub",
   "HTML",
   "CSS",
   "JavaScript",
-  "TypeScript",
-  "React",
-  "Next.js",
-  "Node.js",
-  "Git",
-  "Tailwind",
-  "Shadcn UI",
-  "Three.js",
-  "Framer Motion",
-  "Prisma",
-  "MySQL",
-  "PostgreSQL",
-  "Redux",
-  "Express",
-  "Python",
-  "Django",
 ] as const;
 
-// Owner name
-export const OWNER_NAME = "Sanidhya Kumar Verma";
+// OWNER NAME
+export const OWNER_NAME = "Anoop Shivadas";

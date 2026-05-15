@@ -54,15 +54,19 @@ const Intro = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
       >
-        I build{" "}
+        I work with{" "}
         <span className="text-white font-semibold">
-          modern web applications
-        </span>{" "}
-        and work with{" "}
+          data analytics
+        </span>
+        ,{" "}
         <span className="text-white font-semibold">
-          data-driven solutions
+          dashboards
+        </span>
+        , and{" "}
+        <span className="text-white font-semibold">
+          business insights
         </span>{" "}
-        to solve real-world problems.
+        to transform raw data into meaningful and actionable solutions.
       </motion.p>
 
       {/* 🔥 FOCUS LINE */}
@@ -72,7 +76,7 @@ const Intro = () => {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.3 }}
       >
-        Web Development • Data Analytics • Problem Solving
+        Data Analytics • Business Intelligence • Problem Solving
       </motion.p>
 
       {/* 🔥 BUTTONS */}
